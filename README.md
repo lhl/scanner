@@ -26,12 +26,13 @@ How it Works
 ------------
 ![screenshot](https://www.evernote.com/shard/s1/sh/b063ac72-6056-4702-95f0-18b7fe6f7afc/63af8e838970dcc40a42a4adef42097a/res/afe260b3-f54d-446b-b2c5-86b1d9f8bead/skitch.png)
 The 'scan' app is meant to be launched via keyboard which starts the scan.py server
-(if necessary) and opens a simple UI. Your last-used settings are remembered and
-everything is keyboard-accelerated (ctrl-letter or letter when text fields are unfocused).
+(if necessary) and opens a simple UI in a new Chrome window. Your last-used settings
+are remembered and everything is keyboard-accelerated (ctrl-letter or letter when 
+text fields are unfocused).
 
 ctrl-s, ctrl-enter, cmd-enter and escape work globally and do what you'd expect.
 
-window is automatically closed when scanning is finished.
+The Chrome window is automatically closed when scanning is finished.
 
 
 Requirements
