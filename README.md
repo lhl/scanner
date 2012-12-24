@@ -31,6 +31,8 @@ everything is keyboard-accelerated (ctrl-letter or letter when text fields are u
 
 ctrl-s, ctrl-enter, cmd-enter and escape work globally and do what you'd expect.
 
+window is automatically closed when scanning is finished.
+
 
 Requirements
 ------------
