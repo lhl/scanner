@@ -4,21 +4,37 @@ scanner
 Simple Scanning App (OS X, python, tornado, Chrome, ExactScan, Evernote)
 
 This app is a thin wrapper meant to be run via something like Quicksilver.
-It's completely keyboard driven and tries to be minimally invasive.
+It's completely keyboard driven and tries to be minimally invasive, allowing
+quick scanning via ExactScan into Evernote on OS X (tested on 10.8).
 
 This is built for my Xerox Documate 262, but can probably work w/ other scanners.
+If you haven't bought a scanner yet and are thinking about scanning into Evernote
+there are scanners (like the Fujitsu ScanSnap) that will save you time and effort
+w/ 1-click scanning into Evernote built-in.
 
-Requirements:
+Code is rough around the edges but putting this out there in case anyway finds it
+useful as it includes a few interesting snippets I haven't seen around anywhere:
+- opening/URL loading Google Chrome via py-appscript
+- subprocess multiline calls via osascript (ExactScan)
+- py-appscript posting to Evernote
 
+Also, new to me:
+- Automator self-path finding
+
+
+Requirements
+------------
 - runs on port 1223
 - Python
   - appscript
   - tornado
-- ExactScan (Pro) -- this is $75-$100; http://www.exactscan.com/
+- ExactScan (Pro) -- this is $75/$100; http://www.exactscan.com/
 - Google Chrome
 - Evernote
 
-Setup:
+
+Setup
+-----
 - change PORT in scan.py if necessary
 - Add Profiles to ExactScan w/ the following settings: 
   - Folder name: /private/tmp
@@ -30,8 +46,17 @@ Setup:
   - 12: Back
 
 
-Note: This app uses py-appscript, which, sadly is no longer developed or
-supported: http://appscript.sourceforge.net/status.html
+Notes
+-----
+This app uses py-appscript, which, sadly is no longer developed or
+supported (but is a lot more pleasant than passing via osascript when it works): 
+http://appscript.sourceforge.net/status.html
 
 For more (sad panda) discussion, see:
 http://www.leancrew.com/all-this/2012/06/the-first-nail-in-the-coffin-of-python-appscript/
+
+For some other notes/code on Evernote scanning:
+- http://norman.walsh.name/2009/11/01/evernote
+- http://blog.evernote.com/blog/2008/11/12/scan-to-evernote-on-mac/
+- http://katiefloyd.me/revisiting-evernote-and-paperless-updated-hazel-rule/
+- http://discussion.evernote.com/topic/27005-help-image-capture-wont-allow-scan-to-evernote/page__st__20
