@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css" />
+<style>
+</style>
+</head>
+<body>
+<input id="title" name="title" placeholder="Title" autofocus value="{{ d }}">
+<textarea id="body" name="body" placeholder="Body"></textarea>
+
+<section>
+  <input id="Color" name="type" type="radio" class="radio-button mousetrap">
+  <label for="Color"><u>C</u>olor</label><br>
+
+  <input id="Gray" name="type" type="radio" class="radio-button mousetrap">
+  <label for="Gray"><u>G</u>ray</label><br>
+
+  <input id="Lineart" name="type" type="radio" class="radio-button mousetrap">
+  <label for="Lineart">B&amp;<u>W</u></label>
+</section>
+
+<section>
+  <input id="600" name="dpi" type="radio" class="radio-button mousetrap">
+  <label for="600"><u>6</u>00 dpi</label><br>
+
+  <input id="300" name="dpi" type="radio" class="radio-button mousetrap">
+  <label for="300"><u>3</u>00 dpi</label><br>
+
+  <input id="150" name="dpi" type="radio" class="radio-button mousetrap">
+  <label for="150"><u>1</u>50 dpi</label><br>
+</section>
+
+<section>
+  <input id="duplex" name="side" type="radio" class="radio-button mousetrap">
+  <label for="duplex"><u>D</u>uplex</label><br>
+
+  <input id="front" name="side" type="radio" class="radio-button mousetrap">
+  <label for="front"><u>F</u>ront (down)</label><br>
+
+  <input id="back" name="side" type="radio" class="radio-button mousetrap">
+  <label for="back">Bac<u>k</u> (up)</label><br>
+</section>
+
+<button id="scan" class="mousetrap"><u>S</u>can</button>
+
+<script src="/static/jquery.min.js"></script>
+<script src="/static/mousetrap.min.js"></script>
+<script>
+$(function() {
+  /*** Key Bindings ***/
+  Mousetrap.bind(['ctrl+t', 't'], function(e) { $('#title').focus(); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+b', 'b'], function(e) { $('#body').focus(); e.preventDefault(); });
+
+  Mousetrap.bind(['ctrl+c', 'c'], function(e) { $('#Color').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+g', 'g'], function(e) { $('#Gray').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+w', 'w'], function(e) { $('#Lineart').trigger('click'); e.preventDefault(); });
+
+
+  Mousetrap.bind(['ctrl+6', '6'], function(e) { $('#600').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+3', '3'], function(e) { $('#300').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+1', '1'], function(e) { $('#150').trigger('click'); e.preventDefault(); });
+
+  Mousetrap.bind(['ctrl+d', 'd'], function(e) { $('#duplex').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+f', 'f'], function(e) { $('#front').trigger('click'); e.preventDefault(); });
+  Mousetrap.bind(['ctrl+k', 'k'], function(e) { $('#back').trigger('click'); e.preventDefault(); });
+
+  Mousetrap.bind(['s'], submit);
+
+  // Unfocus from anywhere
+  $(document).keydown(function(e){
+    if(e.which == 27){
+      $('input, textarea').blur();
+    }
+  });
+
+  // Submit from anywhere
+  $(document).keydown(function(e){
+    if ((e.keyCode == 13 || e.keyCode == 83) && (e.ctrlKey || e.metaKey)) {
+      submit();
+    }
+  });
+  $('#scan').click(submit);
+
+
+  // see: http://stackoverflow.com/questions/5874652/prop-vs-attr
+  // http://api.jquery.com/prop/
+  $('input:radio').change(function() {
+    localStorage.setItem($(this).attr('name'), $(this).attr('id'));
+
+    // Remove
+    // $('input:[name='+$(this).attr('name')+']').prop('checked', false);
+    $(this).prop('checked', true);
+  });
+
+
+  /*** Saved/Default Selection ***/
+  var type = localStorage.getItem('type') ? localStorage.getItem('type') : 'Color';
+  $('#'+type).trigger('click');
+
+  var dpi = localStorage.getItem('dpi') ? localStorage.getItem('dpi') : '300';
+  $('#'+dpi).trigger('click');
+
+  var side = localStorage.getItem('side') ? localStorage.getItem('side') : 'front';
+  $('#'+side).trigger('click');
+
+
+});
+
+function submit() {
+  var scan = {
+    title: $('#title').val(),
+    body: $('#body').val()
+  };
+
+  $('input:checked').each(function(i) { 
+    scan[$(this).attr('name')] = $(this).attr('id');
+  });
+
+  console.log(scan);
+
+  // AJAX POST
+  $.post('/', scan, function(data) {
+    console.log(data);
+    window.close();
+  });
+}
+
+</script>
+
+
+</body>
+</html>
