@@ -66,5 +66,5 @@ License
 This code is licensed under CC-BY-SA 3.0. Basically, copyleft.
 http://creativecommons.org/licenses/by-sa/3.0/
 
-Shiny radio buttons pulled from Matt Gentile's CSS3 UI Kit: http://www.icondeposit.com/design:58
+Shiny radio buttons adapted from Matt Gentile's CSS3 UI Kit: http://www.icondeposit.com/design:58
 CC-BY 3.0
