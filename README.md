@@ -60,3 +60,11 @@ For some other notes/code on Evernote scanning:
 - http://blog.evernote.com/blog/2008/11/12/scan-to-evernote-on-mac/
 - http://katiefloyd.me/revisiting-evernote-and-paperless-updated-hazel-rule/
 - http://discussion.evernote.com/topic/27005-help-image-capture-wont-allow-scan-to-evernote/page__st__20
+
+License
+-------
+This code is licensed under CC-BY-SA 3.0. Basically, copyleft.
+http://creativecommons.org/licenses/by-sa/3.0/
+
+Shiny radio buttons pulled from Matt Gentile's CSS3 UI Kit: http://www.icondeposit.com/design:58
+CC-BY 3.0
