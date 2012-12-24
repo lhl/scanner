@@ -9,7 +9,7 @@ quick scanning via ExactScan into Evernote on OS X (tested on 10.8).
 
 This is built for my Xerox Documate 262, but can probably work w/ other scanners.
 If you haven't bought a scanner yet and are thinking about scanning into Evernote
-there are scanners (like the Fujitsu ScanSnap) that will save you time and effort
+there are scanners (like the [Fujitsu ScanSnap](http://www.amazon.com/gp/product/B001XWCQO2/ref=as_li_ss_tl?ie=UTF8&tag=randomfoo-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B001XWCQO2)) that will save you time and effort
 w/ 1-click scanning into Evernote built-in.
 
 Code is rough around the edges but putting this out there in case anyway finds it
