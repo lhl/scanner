@@ -4,7 +4,6 @@ from   appscript import *
 import os
 import subprocess
 import time
-import tornado.autoreload
 import tornado.ioloop
 import tornado.web
 
@@ -79,7 +78,6 @@ if __name__ == '__main__':
   try:
     Application().listen(PORT)
     ioloop = tornado.ioloop.IOLoop.instance()
-    tornado.autoreload.start(io_loop=ioloop)
 
     c = app('Google Chrome')
     w = c.make(new='cwin')
@@ -87,7 +85,6 @@ if __name__ == '__main__':
     t.URL.set('http://localhost:%s/' % PORT)
 
     ioloop.start()
-
   except:
     c = app('Google Chrome')
     w = c.make(new='cwin')
